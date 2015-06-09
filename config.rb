@@ -25,6 +25,8 @@ require 'susy'
 # Automatic image dimensions on image_tag helper
 # activate :automatic_image_sizes
 
+activate :syntax, :line_numbers => true
+
 ###
 # Page command
 ###

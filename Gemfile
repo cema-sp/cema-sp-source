@@ -20,6 +20,9 @@ gem "compass-h5bp" # HTML5 Boilerplate styles
 # Font Awesome icons
 gem "font-awesome-middleman", "~> 4.0.3"
 
+# Syntax highlighting via Rouge
+gem "middleman-syntax"
+
 # Javascript
 # gem "therubyracer"
 # gem "therubyrhino"

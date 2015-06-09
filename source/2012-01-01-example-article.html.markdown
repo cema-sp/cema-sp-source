@@ -5,3 +5,10 @@ tags: example
 ---
 
 This is an example article. You probably want to delete it and write your own articles!
+
+~~~ ruby
+def meth
+  @aa = "bb"
+  return 1+101
+end
+~~~
