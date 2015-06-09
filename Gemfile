@@ -26,6 +26,9 @@ gem "middleman-syntax"
 # Generate robots.txt from config
 gem 'middleman-robots'
 
+# Slim template engine
+gem "slim", require: false
+
 # Javascript
 # gem "therubyracer"
 # gem "therubyrhino"

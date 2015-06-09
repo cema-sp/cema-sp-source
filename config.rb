@@ -4,6 +4,11 @@
 
 # Susy grids in Compass
 require 'susy'
+# Slim templates engine
+require 'slim'
+
+# Slim::Engine.set_options pretty: true
+# set :slim, pretty: true
 
 # Change Compass configuration
 # compass_config do |config|
