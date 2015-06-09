@@ -4,6 +4,11 @@ gem "middleman", "~> 3.2.0"
 # gem "middleman-deploy"
 # gem "middleman-favicon-maker", "~> 3.2"
 
+gem "middleman-blog"
+
+# For feed.xml.builder
+gem "builder", "~> 3.0"
+
 gem "compass", "~> 0.12.2"
 
 # Compass plugins
