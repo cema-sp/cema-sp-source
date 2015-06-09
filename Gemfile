@@ -3,7 +3,6 @@ source "https://rubygems.org"
 ruby '2.2.2'
 
 gem "middleman"
-# gem "middleman-deploy"
 # gem "middleman-favicon-maker", "~> 3.2"
 
 gem "middleman-blog"
@@ -26,6 +25,12 @@ gem "middleman-syntax"
 
 # Generate robots.txt from config
 gem 'middleman-robots'
+
+# Live-reloading plugin
+gem "middleman-livereload", "~> 3.1.0"
+
+# Deploy tool
+gem 'middleman-deploy', '~> 1.0'
 
 # Javascript
 # gem "therubyracer"

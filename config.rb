@@ -83,8 +83,11 @@ set :images_dir, "img"
 # Development configuration
 configure :development do
   set :slim, pretty: true
-  # Reload the browser automatically whenever files change
-  activate :livereload
+
+# Reload the browser automatically whenever files change
+activate :livereload
+
+  set :debug_assets, true
 end
 
 # Build-specific configuration
@@ -106,6 +109,8 @@ configure :build do
   # Use relative URLs
   activate :relative_assets
   activate :asset_hash
+
+  activete :gzip
 
   # Compress PNGs after build
   # First: gem install middleman-smusher
