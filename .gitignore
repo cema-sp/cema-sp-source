@@ -19,3 +19,6 @@
 
 # Ignore temporary files
 /tmp
+
+# Ignore executable files
+/bin
