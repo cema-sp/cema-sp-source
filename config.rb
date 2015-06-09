@@ -10,6 +10,8 @@ require 'susy'
 #   config.output_style = :compact
 # end
 
+@hostname = 'http://example.com'
+
 ###
 # Haml
 ###
@@ -153,6 +155,14 @@ configure :build do
 
   # Or use a different image path
   # set :http_path, "/Content/images/"
+
+  activate :robots, :rules => [
+    {
+      :user_agent => '*',
+      :allow => %w(/)
+    }
+  ],
+  :sitemap => "#{@hostname}/sitemap.xml"
 end
 
 # Requires middleman-deploy and rsync

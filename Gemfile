@@ -23,6 +23,9 @@ gem "font-awesome-middleman", "~> 4.0.3"
 # Syntax highlighting via Rouge
 gem "middleman-syntax"
 
+# Generate robots.txt from config
+gem 'middleman-robots'
+
 # Javascript
 # gem "therubyracer"
 # gem "therubyrhino"
