@@ -15,7 +15,8 @@ require 'slim'
 #   config.output_style = :compact
 # end
 
-@hostname = 'http://example.com'
+# Actual deployment FQDN
+set :deployment_url, 'http://example.com'
 
 ###
 # Haml
@@ -167,7 +168,7 @@ configure :build do
       :allow => %w(/)
     }
   ],
-  :sitemap => "#{@hostname}/sitemap.xml"
+  :sitemap => "#{deployment_url}/sitemap.xml"
 end
 
 # Requires middleman-deploy and rsync
