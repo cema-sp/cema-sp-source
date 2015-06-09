@@ -11,23 +11,21 @@ gem "middleman-blog"
 # For feed.xml.builder
 gem "builder", "~> 3.0"
 
-gem "compass"
+# Slim template engine
+gem "slim", require: false
 
 # Compass plugins
 gem "susy"
+gem "compass"
 gem "compass-h5bp" # HTML5 Boilerplate styles
-
+gem 'middleman-autoprefixer'
 # Font Awesome icons
 gem "font-awesome-middleman", "~> 4.0.3"
-
 # Syntax highlighting via Rouge
 gem "middleman-syntax"
 
 # Generate robots.txt from config
 gem 'middleman-robots'
-
-# Slim template engine
-gem "slim", require: false
 
 # Javascript
 # gem "therubyracer"

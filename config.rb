@@ -1,75 +1,34 @@
-###
-# Compass
-###
-
-# Susy grids in Compass
 require 'susy'
-# Slim templates engine
 require 'slim'
-
-configure :development do
-  set :slim, pretty: true
-end
-
-# Change Compass configuration
-# compass_config do |config|
-#   config.output_style = :compact
-# end
 
 # Actual deployment FQDN
 set :deployment_url, 'http://example.com'
 
-###
-# Haml
-###
+# Skip locale validation (and validation warnings)
+I18n.enforce_available_locales = false
 
-# CodeRay syntax highlighting in Haml
-# First: gem install haml-coderay
-# require 'haml-coderay'
-
-# CoffeeScript filters in Haml
-# First: gem install coffee-filter
-# require 'coffee-filter'
+compass_config do |config|
+  config.output_style = :compact
+end
 
 # Automatic image dimensions on image_tag helper
-# activate :automatic_image_sizes
-
+activate :automatic_image_sizes
+# Pretty URLs
+activate :directory_indexes
 activate :syntax, :line_numbers => true
+activate :autoprefixer
 
-###
-# Page command
-###
-
-# Per-page layout changes:
-#
-# With no layout
-# page "/path/to/file.html", :layout => false
-#
-# With alternative layout
-# page "/path/to/file.html", :layout => :otherlayout
-#
-# A path which all have the same layout
-# with_layout :admin do
-#   page "/admin/*"
-# end
-
-# Proxy (fake) files
-# page "/this-page-has-no-template.html", :proxy => "/template-file.html" do
-#   @which_fake_page = "Rendering a fake page with a variable"
-# end
+page "/feed.xml", layout: false
 
 ###
 # Blog settings
 ###
 
 # Time.zone = "UTC"
-
 activate :blog do |blog|
   # This will add a prefix to all links, template references and source paths
-  # blog.prefix = "blog"
-
-  # blog.permalink = "{year}/{month}/{day}/{title}.html"
-  # Matcher for blog source files
+  blog.prefix = "blog"
+  blog.permalink = "{year}/{month}/{day}/{title}.html"
   # blog.sources = "{year}-{month}-{day}-{title}.html"
   # blog.taglink = "tags/{tag}.html"
   # blog.layout = "layout"
@@ -79,26 +38,18 @@ activate :blog do |blog|
   # blog.month_link = "{year}/{month}.html"
   # blog.day_link = "{year}/{month}/{day}.html"
   # blog.default_extension = ".markdown"
-
   blog.tag_template = "tag.html"
   blog.calendar_template = "calendar.html"
-
   # Enable pagination
   # blog.paginate = true
   # blog.per_page = 10
   # blog.page_link = "page/{num}"
 end
 
-page "/feed.xml", layout: false
-
-# Reload the browser automatically whenever files change
-# activate :livereload
 
 ###
 # Helpers
 ###
-
-# Methods defined in the helpers block are available in templates
 helpers do
   # Calculate the years for a copyright
   def copyright_years(start_year)
@@ -124,17 +75,17 @@ helpers do
   end
 end
 
-# Change the CSS directory
-# set :css_dir, "alternative_css_directory"
-
-# Change the JS directory
-# set :js_dir, "alternative_js_directory"
-
-# Change the images directory
-# set :images_dir, "alternative_image_directory"
-
-# Change the fonts directory
+set :css_dir, "css"
+set :js_dir, "js"
+set :images_dir, "img"
 # set :fonts_dir,  "alternative_fonts_directory"
+
+# Development configuration
+configure :development do
+  set :slim, pretty: true
+  # Reload the browser automatically whenever files change
+  activate :livereload
+end
 
 # Build-specific configuration
 configure :build do
@@ -144,16 +95,17 @@ configure :build do
   #   :favicon_maker_base_image => "favicon_base.svg"
 
   # For example, change the Compass output style for deployment
-  # activate :minify_css
+  activate :minify_css
 
   # Minify Javascript on build
-  # activate :minify_javascript
+  activate :minify_javascript
 
   # Enable cache buster
   # activate :cache_buster
 
   # Use relative URLs
-  # activate :relative_assets
+  activate :relative_assets
+  activate :asset_hash
 
   # Compress PNGs after build
   # First: gem install middleman-smusher
@@ -172,17 +124,12 @@ configure :build do
   :sitemap => "#{deployment_url}/sitemap.xml"
 end
 
-# Requires middleman-deploy and rsync
-# activate :deploy do |deploy|
-#   deploy.method = :rsync
-#   deploy.user   = "example"
-#   deploy.host   = "www.example.com"
-#   deploy.path   = "/public_html"
-#   # Optional Settings
-#   deploy.port  = 22 # ssh port, default: 22
-#   deploy.clean = true # remove orphaned files on remote host, default: false
-#   deploy.build_before = true # default: false
-# end
-
-# Skip locale validation (and validation warnings)
-I18n.enforce_available_locales = false
+activate :deploy do |deploy|
+  deploy.method = :git
+  # Optional Settings
+  # deploy.remote   = 'custom-remote' # remote name or git url, default: origin
+  # deploy.branch   = 'custom-branch' # default: gh-pages
+  deploy.strategy = :submodule      # commit strategy: can be :force_push or :submodule, default: :force_push
+  # deploy.commit_message = 'custom-message'      # commit message (can be empty), default: Automated commit at `timestamp` by middleman-deploy `version`
+  deploy.build_before = true # default: false
+end
