@@ -7,8 +7,9 @@ require 'susy'
 # Slim templates engine
 require 'slim'
 
-# Slim::Engine.set_options pretty: true
-# set :slim, pretty: true
+configure :development do
+  set :slim, pretty: true
+end
 
 # Change Compass configuration
 # compass_config do |config|

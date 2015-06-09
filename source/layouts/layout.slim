@@ -1,0 +1,72 @@
+doctype html
+/[if lt IE 7]
+  html.no-js.lt-ie9.lt-ie8.lt-ie7
+/[if IE 7]
+  html.no-js.lt-ie9.lt-ie8
+/[if IE 8]
+  html.no-js.lt-ie9
+/[if gt IE 8]
+  html.no-js
+
+    head
+      meta charset="utf-8"
+      meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
+      meta name="viewport" content="width=device-width, initial-scale=1.0"
+
+      /meta name="google-site-verification" content=""
+      /meta name='wmail-verification' content=''
+      /meta name='yandex-verification' content=''
+      
+      /meta name="description" content="#{ ( current_article.nil? ? nil : current_article.data.description ) || current_page.data.description || data.seo.description}"
+      /meta name="keywords" content="#{(( current_article.nil? ? nil : current_article.data.keywords ) || current_page.data.keywords || data.seo.keywords).join(', ')}"
+
+      /! Use title if it's in the page YAML frontmatter
+      title
+        = [current_article.nil? ? nil : current_article.title, \
+            current_page.data.title, \
+            "Cema"\
+          ].reject { |e| e.nil? }.join(' | ')
+
+
+      / Place favicon.ico and apple-touch-icon.png in the root directory
+      link rel="shortcut icon" href="/favicon.ico?v=1" type="image/x-icon"
+      link rel="apple-touch-icon" href="/apple-touch-icon.png"
+
+      = stylesheet_link_tag "screen"
+      / = javascript_include_tag "libs/modernizr-2.7.1.min.js"
+
+      body
+        /[if lt IE 7]
+          p.chromeframe
+            | Вы используете <strong>устаревший</strong> браузер. Пожалуйста 
+            a href="http://browsehappy.com/" обновите Ваш браузер
+            | или 
+            a href="http://www.google.com/chromeframe/?redirect=true" установите Google Chrome Frame
+            | для просмотра современных сайтов.
+
+
+        .container
+          header
+            h1 = current_page.data.title
+          #main-content role="main"
+            = yield
+
+          footer
+            p &copy; #{copyright_years(2011)} AmicusUser
+
+        /= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
+        javascript:
+          window.jQuery || document.write('<script src="/javascripts/libs/jquery-1.10.2.min.js"><\/script>')
+
+        / Holder.js - canvas-generated placeholder images for prototyping
+        = javascript_include_tag "libs/holder"
+        = javascript_include_tag "plugins", "script"
+
+        /!-- Google Analytics
+        javascript:
+          (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+          function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+          e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+          e.src='https://www.google-analytics.com/analytics.js';
+          r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+          ga('create','UA-XXXXXXX','auto');ga('send','pageview');
