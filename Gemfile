@@ -1,6 +1,8 @@
 source "https://rubygems.org"
 
-gem "middleman", "~> 3.2.0"
+ruby '2.2.2'
+
+gem "middleman"
 # gem "middleman-deploy"
 # gem "middleman-favicon-maker", "~> 3.2"
 
@@ -9,11 +11,11 @@ gem "middleman-blog"
 # For feed.xml.builder
 gem "builder", "~> 3.0"
 
-gem "compass", "~> 0.12.2"
+gem "compass"
 
 # Compass plugins
-gem "susy", "~> 1.0.9"
-gem "compass-h5bp", "~> 0.1.2" # HTML5 Boilerplate styles
+gem "susy"
+gem "compass-h5bp" # HTML5 Boilerplate styles
 
 # Font Awesome icons
 gem "font-awesome-middleman", "~> 4.0.3"
