@@ -41,12 +41,12 @@ doctype html
 
 
       .container
-        header
-          h1 = current_page.data.title
+        / header.header
+          / h1 = current_page.data.title
         #main-content role="main"
           = yield
 
-        footer
+        footer.footer
           p &copy; #{copyright_years(2011)} AmicusUser
 
       /= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
