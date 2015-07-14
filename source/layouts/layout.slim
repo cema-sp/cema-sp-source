@@ -27,7 +27,7 @@ doctype html
     /link rel="shortcut icon" href="/favicon.ico?v=1" type="image/x-icon"
     /link rel="apple-touch-icon" href="/apple-touch-icon.png"
 
-    = stylesheet_link_tag "screen"
+    / = stylesheet_link_tag "screen"
     / = javascript_include_tag "libs/modernizr-2.7.1.min.js"
 
     body
@@ -53,9 +53,13 @@ doctype html
       /javascript:
       /  window.jQuery || document.write('<script src="/javascripts/libs/jquery-1.10.2.min.js"><\/script>')
 
+      = stylesheet_link_tag "screen"
+      = stylesheet_link_tag "material/material"
+      = stylesheet_link_tag "//fonts.googleapis.com/icon?family=Material+Icons"
       / Holder.js - canvas-generated placeholder images for prototyping
       = javascript_include_tag "libs/holder"
       = javascript_include_tag "plugins", "script"
+      = javascript_include_tag "material/material"
 
       /!-- Google Analytics
       javascript:
