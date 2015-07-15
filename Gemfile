@@ -35,6 +35,8 @@ gem 'middleman-deploy', '~> 1.0'
 # gem "therubyracer"
 # gem "therubyrhino"
 
+gem 'pry'
+
 ### Windows specific gems ###
 platforms :mswin, :mingw do
    gem "wdm", "~> 0.1.0" # Windows Directory Monitor
