@@ -7,6 +7,9 @@ set :deployment_url, 'http://example.com'
 # Skip locale validation (and validation warnings)
 I18n.enforce_available_locales = false
 
+# Set TZ
+Time.zone = "Moscow"
+
 compass_config do |config|
   config.output_style = :compact
 end
