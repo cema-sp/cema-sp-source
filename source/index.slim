@@ -4,12 +4,20 @@ description: Blog on web & software development
 keywords:
   - blog
 # bodyclass: newproject
+pageable: true
+# per_page: 2
 ---
 
 .blog
   .blog_header
     .blog_header_article
     .blog_header_info
-  .blog_article
-  .blog_article
-  .blog_article
+
+  - page_articles.each do |article|
+    article.blog_article
+      h1
+        / span.blog_article_date #{article.date.strftime("%d.%m.%Y")}
+        = link_to article.title, article
+      p.blog_article_summary
+        | #{article.data.summary || article.summary} 
+        / = link_to 'Далее..', article, class: "read-article"
