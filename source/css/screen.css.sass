@@ -20,6 +20,12 @@
 
 // Your own styles go here.
 
+$footer-height: $column-width
+
+html, body, .container
+  height: 100%
+
+
 .container
   // Force images to scale down to their container widths.
   img
@@ -29,16 +35,26 @@
 header.header
   background-color: #E0FF80
 
+#main-content
+  min-height: 100%
+  height: auto !important /* This line and the next line are not necessary unless you need IE6 support */
+  height: 100%
+  margin-bottom: -($footer-height)
+  &:after
+    content: ""
+    display: block
+    height: $footer-height
+
 .blog
   .blog_header
     overflow: auto
     // ^ or use clearfix mixin in magic grid
     background-color: #808FFF
     .blog_header_article
-      height: 100px
+      height: ($column-width * 5 + $gutter-width * 4)
       background-color: #FF8D8D
     .blog_header_info
-      height: 100px
+      height: ($column-width * 5 + $gutter-width * 4)
       background-color: #80FFAC
   .blog_article
     height: ($column-width * 4 + $gutter-width * 3)
@@ -46,6 +62,12 @@ header.header
 
 footer.footer
   background-color: #E0FF80
+  box-sizing: border-box
+  height: $footer-height
+  padding: $footer-height/3
+
+  ul, li, p
+    line-height: $footer-height/3
 
 
 // H5BP helper classes & mixins.

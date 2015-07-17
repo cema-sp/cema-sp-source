@@ -46,8 +46,15 @@ doctype html
         #main-content role="main"
           = yield
 
-        footer.footer
-          p &copy; #{copyright_years(2011)} AmicusUser
+        footer.footer.mdl-mini-footer
+          .mdl-mini-footer--left-section
+            ul.mdl-mini-footer--link-list
+              li
+                a href="" Link 1
+              li
+                a href="" Link 2
+          .mdl-mini-footer--right-section
+            p &copy; #{copyright_years(2011)} S.Pisarev
 
       /= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
       /javascript:
