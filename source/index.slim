@@ -14,10 +14,12 @@ pageable: true
     .blog_header_info
 
   - page_articles.each do |article|
-    article.blog_article
-      h1
-        / span.blog_article_date #{article.date.strftime("%d.%m.%Y")}
-        = link_to article.title, article
-      p.blog_article_summary
-        | #{article.data.summary || article.summary} 
-        / = link_to 'Далее..', article, class: "read-article"
+    article.blog_article.mdl-card.mdl-shadow--2dp
+      = link_to article, class: 'blog_article_header_link' do
+        .blog_article_header.mdl-card__title.mdl-card--expand
+          h1.mdl-card__title-text
+            | #{article.title}
+      .blog_article_summary.mdl-card__supporting-text
+        p
+          | #{article.data.summary || article.summary} 
+          / = link_to 'Далее..', article, class: "read-article"
