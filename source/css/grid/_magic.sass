@@ -41,6 +41,11 @@ $layouts: $break-desktop
       @include set-container-width
       @include susy-grid-background
 
+      #main-content
+        // @include set-container-width
+        @include susy-grid-background
+
+
 @include at-breakpoint($break-desktop)
   .header
     @include span-columns($break-desktop omega)
