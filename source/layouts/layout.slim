@@ -12,7 +12,7 @@ doctype html
     /meta name='wmail-verification' content=''
     /meta name='yandex-verification' content=''
     
-    meta name="description" content="#{ ( current_article.nil? ? nil : current_article.data.description ) || current_page.data.description || ''}"
+    meta name="description" content="#{ ( current_article.nil? ? nil : current_article.data.summary || current_article.summary ) || current_page.data.description || ''}"
     meta name="keywords" content="#{(( current_article.nil? ? nil : current_article.data.keywords ) || current_page.data.keywords || []).join( ', ' )}"
 
     /! Use title if it's in the page YAML frontmatter
