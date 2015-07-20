@@ -22,11 +22,15 @@
 
 $footer-height: $column-width
 
+body
+  background-attachment: fixed
+
 html, body, .container
   height: 100%
 
 
 .container
+  min-height: 100%
   // Force images to scale down to their container widths.
   img
     max-width: 100%
@@ -39,13 +43,22 @@ header.header
   min-height: 100%
   height: auto !important /* This line and the next line are not necessary unless you need IE6 support */
   height: 100%
+
+  position: relative
+
   margin-bottom: -($footer-height)
+  padding-bottom: $footer-height
   &:after
     content: ""
     display: block
     height: $footer-height
+    position: relative
+    background-color: transparent
 
 .blog
+  box-sizing: border-box
+  padding: $gutter-width
+
   .blog_header
     overflow: auto
     // ^ or use clearfix mixin in magic grid
@@ -65,6 +78,7 @@ footer.footer
   box-sizing: border-box
   height: $footer-height
   padding: $footer-height/3
+  position: relative
 
   ul, li, p
     line-height: $footer-height/3
