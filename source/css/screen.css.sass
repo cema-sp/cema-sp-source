@@ -39,24 +39,22 @@ $blog-article-header-height: $column-width
 $blog-article-summary-height: $column-width + $gutter-width
 $blog-article-padding: $gutter-width
 
-$blog-article-summary-color: $main-color
-$blog-article-header-color: $main-inverse-color
-$blog-article-summary-bg-color: $main-bg-color-light
-
 $blog-article-gutter: $gutter-width
 
 $footer-height: $column-width
 
 body
   background-attachment: fixed
-  background-image: url('http://www.getmdl.io/templates/blog/images/bg.jpg')
+  // background-image: url('http://www.getmdl.io/templates/blog/images/bg.jpg')
   background-position: center top
   background-repeat: no-repeat
   background-size: cover
 
+  color: $color-primary
+  background-color: $color-primary-bg
+
 html, body, .container
   height: 100%
-
 
 .container
   min-height: 100%
@@ -65,8 +63,8 @@ html, body, .container
     max-width: 100%
     height: auto
 
-header.header
-  background-color: #E0FF80
+// header.header
+//   background-color: #E0FF80
 
 #main-content
   min-height: 100%
@@ -92,40 +90,45 @@ header.header
   .blog_header
     overflow: auto
     // ^ or use clearfix mixin in magic grid
-    background-color: #808FFF
+    // background-color: #808FFF
 
-    .blog_header_article, .blog_header_info
-      height: $blog-header-height
-      margin: 0 0 $blog-article-gutter 0
-      background-color: #FF8D8D
+  .blog_article,
+  .blog_info
+    @extend .mdl-card
+    @extend .mdl-shadow--6dp
 
-  .blog_article
     height: $blog-article-height
     margin: 0 0 $blog-article-gutter 0
 
     font-size: 1em
 
-    background-color: #FFDC80
+    color: $color-primary-inverse
+    background-color: $color-primary-inverse-bg
 
+  .blog_article
     .blog_article_header, .blog_article_summary
       width: 100%
 
     .blog_article_header_link
-      color: $blog-article-header-color
+      color: $color-primary-inverse
       text-decoration: none
 
       &:active, &:hover, &:visited
         text-decoration: none
 
       &:hover h1
-        border-bottom: 2px dashed $blog-article-header-color
+        border-bottom: 2px dashed
+        // $blog-article-header-color
       
 
     .blog_article_header
+      @extend .mdl-card__title
+      @extend .mdl-card--expand
+
       height: ($blog-article-height - $blog-article-summary-height)
       padding: $blog-article-padding
 
-      background-image: url('http://www.getmdl.io/templates/blog/images/road_big.jpg')
+      // background-image: url('http://www.getmdl.io/templates/blog/images/road_big.jpg')
       background-position: center top
       background-repeat: no-repeat
       background-size: cover
@@ -140,16 +143,20 @@ header.header
       // vertical-align: middle
 
     h1
+      @extend .mdl-card__title-text
+
       display: inline-flex
       font-size: 2.75em
       border-bottom: 2px dashed transparent
 
     .blog_article_summary
+      @extend .mdl-card__supporting-text
+
       height: $blog-article-summary-height
       padding: $blog-article-padding
 
-      color: $blog-article-summary-color
-      background-color: $blog-article-summary-bg-color
+      color: $color-primary
+      background-color: $color-primary-bg
 
       font-size: 1em
       line-height: 1.5em
@@ -163,12 +170,20 @@ header.header
         display: table-cell
         vertical-align: middle
 
+  .blog_header > .blog_article,
+  .blog_header > .blog_info
+    height: $blog-header-height
+    // margin: 0 0 $blog-article-gutter 0
+    // background-color: #FF8D8D
+
 footer.footer
-  background-color: #E0FF80
   box-sizing: border-box
   height: $footer-height
   padding: $footer-height/3
   position: relative
+
+  color: $color-primary-inverse
+  background-color: $color-primary-inverse-bg
 
   ul, li, p
     line-height: $footer-height/3

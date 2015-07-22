@@ -8,18 +8,24 @@ pageable: true
 # per_page: 2
 ---
 
-.blog
-  .blog_header
-    .blog_header_article
-    .blog_header_info
+section.blog
+  header.blog_header
+    article.blog_article
+      = link_to '/#article', class: 'blog_article_header_link' do
+        header.blog_article_header
+          h1 Title here
+      .blog_article_summary
+        p
+          | Summary here
+    aside.blog_info
 
   - page_articles.each do |article|
-    article.blog_article.mdl-card.mdl-shadow--2dp
+    article.blog_article
       = link_to article, class: 'blog_article_header_link' do
-        .blog_article_header.mdl-card__title.mdl-card--expand
-          h1.mdl-card__title-text
+        header.blog_article_header
+          h1
             | #{article.title}
-      .blog_article_summary.mdl-card__supporting-text
+      .blog_article_summary
         p
           | #{article.data.summary || article.summary} 
           / = link_to 'Далее..', article, class: "read-article"
