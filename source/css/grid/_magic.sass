@@ -51,12 +51,11 @@ $layouts: $break-desktop
     @include span-columns($break-desktop omega)
   .blog
     @include span-columns($break-desktop omega)
-    .blog_header
-      .blog_header_article
-        @include span-columns(7, 10)
-      .blog_header_info
-        @include span-columns(3 omega, 10)
     .blog_article
       @include span-columns($break-desktop omega)
+    .blog_header > .blog_article
+      @include span-columns(7, 10)
+    .blog_header > .blog_info
+      @include span-columns(3 omega, 10)
   .footer
     @include span-columns($break-desktop omega)
