@@ -46,15 +46,16 @@ doctype html
         #main-content role="main"
           = yield
 
-        footer.footer.mdl-mini-footer
-          .mdl-mini-footer--left-section
-            ul.mdl-mini-footer--link-list
-              li
-                a href="" Link 1
-              li
-                a href="" Link 2
-          .mdl-mini-footer--right-section
-            p &copy; #{copyright_years(2011)} S.Pisarev
+        footer.footer
+          .footer_left
+            ul
+              - data.menu.items.each do |item|
+                li disabled=(current_resource.url == item.link ? true : false)
+                  = link_to item.name, item.link
+          .footer_right
+            p
+              | &copy; #{copyright_years(2011)}&emsp;
+              = mail_to "cema.rus@gmail.com", "cema.rus@gmail.com", :subject => "Blog"
 
       /= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
       /javascript:
