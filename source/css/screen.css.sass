@@ -7,17 +7,22 @@
 
 // Material Design (getmdl.io)
 
-$color-primary: rgb(131,175,155)
-$color-primary-bg: rgb(255,255,255)
+$color-primary: rgb(117,117,117)
+// $color-primary: rgb(131,175,155)
+$color-primary-bg: rgb(239,239,239)
 // $color-primary-bg: rgb(249,205,173)
 
-$color-primary-inverse: rgb(252,157,154)
-$color-primary-inverse-bg: rgb(131,175,155)
+$color-primary-inverse: rgb(255,255,255)
+// $color-primary-inverse: rgb(252,157,154)
+$color-primary-inverse-bg: rgb(103,58,183)
+// $color-primary-inverse-bg: rgb(131,175,155)
 
-$color-accent: rgb(254,67,101)
-$color-accent-bg: rgb(200,200,169)
+$color-accent: rgb(66,66,66)
+// $color-accent: rgb(254,67,101)
+$color-accent-bg: rgb(100,255,218)
+// $color-accent-bg: rgb(200,200,169)
 
-@import "material/material"
+@import "material/material.min"
 
 // Susy Grid Systems - choose one to customize
 @import "grid/magic"
@@ -40,6 +45,8 @@ $blog-article-summary-height: $column-width + $gutter-width
 $blog-article-padding: $gutter-width
 
 $blog-article-gutter: $gutter-width
+
+$blog-footer-height: $column-width
 
 $footer-height: $column-width
 
@@ -74,13 +81,21 @@ html, body, .container
   position: relative
 
   margin-bottom: -($footer-height)
-  padding-bottom: $footer-height
+  // padding-bottom: $footer-height
+
   &:after
     content: ""
     display: block
     height: $footer-height
     position: relative
     background-color: transparent
+
+#main-content,
+.blog_header
+  margin-left: -6px
+  margin-right: -6px
+  padding-left: 6px
+  padding-right: 6px
 
 .blog
   box-sizing: border-box
@@ -95,7 +110,7 @@ html, body, .container
   .blog_article,
   .blog_info
     @extend .mdl-card
-    @extend .mdl-shadow--6dp
+    @extend .mdl-shadow--4dp
 
     height: $blog-article-height
     margin: 0 0 $blog-article-gutter 0
@@ -129,6 +144,7 @@ html, body, .container
       padding: $blog-article-padding
 
       // background-image: url('http://www.getmdl.io/templates/blog/images/road_big.jpg')
+      background-image: attr(data-img-src url)
       background-position: center top
       background-repeat: no-repeat
       background-size: cover
@@ -176,7 +192,29 @@ html, body, .container
     // margin: 0 0 $blog-article-gutter 0
     // background-color: #FF8D8D
 
+  .blog_footer
+    width: 100%
+
+    & > div:nth-of-type(1n)
+      height: $blog-footer-height
+      text-align: center
+      display: table
+
+      float: left
+
+    .page_number
+      width: $column-width
+      height: 100%
+      text-align: center
+      vertical-align: middle
+      display: table-cell
+      margin-left: auto
+      margin-right: auto
+
+
 footer.footer
+  @extend .mdl-mini-footer
+
   box-sizing: border-box
   height: $footer-height
   padding: $footer-height/3
@@ -185,8 +223,17 @@ footer.footer
   color: $color-primary-inverse
   background-color: $color-primary-inverse-bg
 
-  ul, li, p
-    line-height: $footer-height/3
+  .footer_left
+    @extend .mdl-mini-footer--left-section
+
+    ul
+      @extend .mdl-mini-footer--link-list
+
+    ul, li, p
+      line-height: $footer-height/3
+
+  .footer_right
+    @extend .mdl-mini-footer--right-section
 
 
 // H5BP helper classes & mixins.
