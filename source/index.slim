@@ -17,6 +17,11 @@ section.blog
       .blog_article_summary
         p
           | Summary here
+    /= binding.pry
+    - header_article = (\
+      articles.select{ |a| a.path[current_page.data.header_article_file] }\
+      + articles).first
+    /= binding.pry
     aside.blog_info
 
   - page_articles.each do |article|
