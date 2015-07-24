@@ -1,6 +1,6 @@
 ---
-title: Example Article 4
-date: 2012-01-01
+title: Example Article 3
+date: 2012-01-03
 tags: example
 ---
 This is an example article. READMORE
