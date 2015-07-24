@@ -57,5 +57,14 @@ $layouts: $break-desktop
       @include span-columns(7, 10)
     .blog_header > .blog_info
       @include span-columns(3 omega, 10)
+    .blog_footer
+      // @include clearfix
+
+      div:nth-of-type(1)
+        @include span-columns(1)
+      div:nth-of-type(2)
+        @include span-columns(8, 10)
+      div:nth-of-type(3)
+        @include span-columns(1 omega)
   .footer
     @include span-columns($break-desktop omega)
