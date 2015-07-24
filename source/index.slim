@@ -19,5 +19,27 @@ section.blog
     = partial 'article', object: header_article
 
     aside.blog_info
+      button#demo-menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon
+        i.material-icons &#xE5D4;
+        / more_vert
+
+      ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect[for="demo-menu-lower-right"]
+        - data.menu.items.each do |item|
+            li.mdl-menu__item disabled=(current_resource.url == item.link ? true : false)
+              #{item.name}
+              /= link_to item.name, item.link
 
   = partial 'article', collection: page_articles.reject{ |a| a==header_article }
+  
+  footer.blog_footer
+    - if num_pages > 1
+      div
+        button.mdl-button.mdl-js-button.mdl-button--fab
+          i.material-icons &#xE408;
+          / navigate_before
+      div
+        span.page_number #{page_number} / #{num_pages}
+      div
+        button.mdl-button.mdl-js-button.mdl-button--fab
+          i.material-icons &#xE409;
+          / navigate_next
