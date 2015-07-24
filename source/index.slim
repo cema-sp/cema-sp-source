@@ -10,27 +10,14 @@ per_page: 2
 
 section.blog
   header.blog_header
-    article.blog_article
-      = link_to '/#article', class: 'blog_article_header_link' do
-        header.blog_article_header
-          h1 Title here
-      .blog_article_summary
-        p
-          | Summary here
     /= binding.pry
     - header_article = (\
       articles.select{ |a| a.path[current_page.data.header_article_file] }\
       + articles).first
     /= binding.pry
+
+    = partial 'article', object: header_article
+
     aside.blog_info
 
-  - page_articles.each do |article|
-    article.blog_article
-      = link_to article, class: 'blog_article_header_link' do
-        header.blog_article_header
-          h1
-            | #{article.title}
-      .blog_article_summary
-        p
-          | #{article.data.summary || article.summary} 
-          / = link_to 'Далее..', article, class: "read-article"
+  = partial 'article', collection: page_articles.reject{ |a| a==header_article }

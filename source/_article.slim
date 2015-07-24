@@ -1,0 +1,11 @@
+article.blog_article
+  = link_to article, class: 'blog_article_header_link' do
+    header.blog_article_header[
+      data-img-src=article.data.image
+      style="background-image: url('#{article.data.image}')"]
+
+      h1
+        | #{article.title}
+  .blog_article_summary
+    p
+      | #{article.data.summary || article.summary}
